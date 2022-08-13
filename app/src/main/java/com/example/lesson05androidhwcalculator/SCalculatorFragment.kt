@@ -27,9 +27,75 @@ class SCalculatorFragment : Fragment() {
         with(binding) {
 
             displayField.text = "0"
+            var string = ""
 
             button0.setOnClickListener {
+                string += "0"
+                displayField.text = string
+            }
+            button1.setOnClickListener {
+                string += "1"
+                displayField.text = string
+            }
+            button2.setOnClickListener {
+                string += "2"
+                displayField.text = string
+            }
+            button3.setOnClickListener {
+                string += "3"
+                displayField.text = string
+            }
+            button4.setOnClickListener {
+                string += "4"
+                displayField.text = string
+            }
+            button5.setOnClickListener {
+                string += "5"
+                displayField.text = string
+            }
+            button6.setOnClickListener {
+                string += "6"
+                displayField.text = string
+            }
+            button7.setOnClickListener {
+                string += "7"
+                displayField.text = string
+            }
+            button8.setOnClickListener {
+                string += "8"
+                displayField.text = string
+            }
+            button9.setOnClickListener {
+                string += "9"
+                displayField.text = string
+            }
+            buttonDot.setOnClickListener {
+                string += "."
+                displayField.text = string
+            }
+            buttonC.setOnClickListener {
+                string = ""
+                displayField.text = "0"
+            }
+            buttonDel.setOnClickListener {
+                string = if (string.length != 0) {
+                    string.dropLast(1)
+                } else {
 
+                }
+                displayField.text = string
+            }
+            button5.setOnClickListener {
+                string += "5"
+                displayField.text = string
+            }
+            button6.setOnClickListener {
+                string += "6"
+                displayField.text = string
+            }
+            button7.setOnClickListener {
+                string += "7"
+                displayField.text = string
             }
         }
     }
