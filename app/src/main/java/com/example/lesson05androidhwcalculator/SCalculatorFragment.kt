@@ -11,6 +11,9 @@ class SCalculatorFragment : Fragment() {
     private var _binding: FragmentScalculatorBinding? = null
     private val binding get() = requireNotNull(_binding)
 
+    val historyList = mutableListOf<String>()
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,6 +26,8 @@ class SCalculatorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val historyList = mutableListOf<String>()
+//        var key = 1
 
         with(binding) {
 
@@ -106,6 +111,10 @@ class SCalculatorFragment : Fragment() {
             }
             buttonEquals.setOnClickListener {
                 resultField.text = Calculator.result(string)
+                historyList.add("$string=$resultField.text")
+            }
+            buttonHist.setOnClickListener {
+                pushFragmentHist()
             }
         }
     }
@@ -114,6 +123,15 @@ class SCalculatorFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+//    companion object {
+//        private const val
+//        fun getInstance(historyList: List<String>): SCalculatorFragment {
+//            return SCalculatorFragment().apply {
+//
+//            }
+//        }
+//    }
 }
 
 class Calculator() {
