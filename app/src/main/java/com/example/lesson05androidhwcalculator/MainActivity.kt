@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 
-val historyList = List(20) {
+val temporaryList = List(20) {
     "history note $it"
 }
 
@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
-fun Fragment.pushFragmentHist(historyList: MutableList<String>) {
-    (requireActivity() as MainActivity).addFragment(HistoryFragment(historyList))
+fun Fragment.pushFragmentHist(historyList: List<String>) {
+    (requireActivity() as MainActivity).addFragment(HistoryFragment(temporaryList))
 }
 
 fun Fragment.pushFragmentCalc() {

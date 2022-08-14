@@ -114,7 +114,7 @@ class SCalculatorFragment : Fragment() {
                 historyList.add("$string=$resultField.text")
             }
             buttonHist.setOnClickListener {
-                pushFragmentHist()
+                pushFragmentHist(temporaryList)
             }
         }
     }
