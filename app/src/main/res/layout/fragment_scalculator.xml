@@ -43,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/display_field"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:autoSizeTextType="uniform"
         android:textSize="50sp"
         tools:text="0"
         android:background="@drawable/frame_style"/>
