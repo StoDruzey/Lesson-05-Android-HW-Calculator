@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@id/result_field"
         app:layout_constraintStart_toStartOf="parent"
         android:text="hist"
-        android:textSize="27sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"/>
 
     <Button
