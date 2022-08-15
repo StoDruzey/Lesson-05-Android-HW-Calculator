@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.lesson05androidhwcalculator.databinding.FragmentScalculatorBinding
 
@@ -114,7 +115,7 @@ class SCalculatorFragment : Fragment() {
                 historyList.add("$string=$resultField.text")
             }
             buttonHist.setOnClickListener {
-                pushFragmentHist(temporaryList)
+                pushFragmentHist(historyList)
             }
         }
     }
@@ -123,15 +124,6 @@ class SCalculatorFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-//    companion object {
-//        private const val
-//        fun getInstance(historyList: List<String>): SCalculatorFragment {
-//            return SCalculatorFragment().apply {
-//
-//            }
-//        }
-//    }
 }
 
 class Calculator() {
