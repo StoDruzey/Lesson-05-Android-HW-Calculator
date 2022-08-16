@@ -105,7 +105,7 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonMinus.setOnClickListener {
-                if (string.takeLast(1) !in "./*+-") {
+                if ((string.takeLast(1) !in ".+-") || string == "") {
                     string += "-"
                 }
                 displayField.text = string
