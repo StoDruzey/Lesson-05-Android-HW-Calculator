@@ -76,7 +76,9 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonDot.setOnClickListener {
-                string += "."
+                if (string.takeLast(1) !in "./*+-") {
+                    string += "."
+                }
                 displayField.text = string
             }
             buttonC.setOnClickListener {
@@ -91,19 +93,27 @@ class SCalculatorFragment : Fragment() {
                 }
             }
             buttonDiv.setOnClickListener {
-                string += "/"
+                if (string.takeLast(1) !in "./*+-") {
+                    string += "/"
+                }
                 displayField.text = string
             }
             buttonMult.setOnClickListener {
-                string += "*"
+                if (string.takeLast(1) !in "./*+-") {
+                    string += "*"
+                }
                 displayField.text = string
             }
             buttonMinus.setOnClickListener {
-                string += "-"
+                if (string.takeLast(1) !in "./*+-") {
+                    string += "-"
+                }
                 displayField.text = string
             }
             buttonPlus.setOnClickListener {
-                string += "+"
+                if (string.takeLast(1) !in "./*+-") {
+                    string += "+"
+                }
                 displayField.text = string
             }
             buttonEquals.setOnClickListener {
