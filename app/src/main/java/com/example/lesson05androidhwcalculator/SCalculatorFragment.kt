@@ -76,10 +76,12 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonDot.setOnClickListener {
-                if (string.takeLast(1) !in "./*+-") {
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
                     string += "."
+                    displayField.text = string
                 }
-                displayField.text = string
             }
             buttonC.setOnClickListener {
                 init()
@@ -93,16 +95,20 @@ class SCalculatorFragment : Fragment() {
                 }
             }
             buttonDiv.setOnClickListener {
-                if (string.takeLast(1) !in "./*+-") {
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
                     string += "/"
+                    displayField.text = string
                 }
-                displayField.text = string
             }
             buttonMult.setOnClickListener {
-                if (string.takeLast(1) !in "./*+-") {
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
                     string += "*"
+                    displayField.text = string
                 }
-                displayField.text = string
             }
             buttonMinus.setOnClickListener {
                 if ((string.takeLast(1) !in ".+-") || string == "") {
@@ -111,19 +117,25 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonPlus.setOnClickListener {
-                if (string.takeLast(1) !in "./*+-") {
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
                     string += "+"
-                }
-                displayField.text = string
-            }
-            buttonEquals.setOnClickListener {
-                if (string.takeLast(1) in "./*+-") {
-                    string = string.dropLast(1)
                     displayField.text = string
                 }
-                val historyString = Calculator.result(string)
-                resultField.text = historyString
-                historyList += "$string=$historyString"
+            }
+            buttonEquals.setOnClickListener {
+                if (string.isNotEmpty() && string != "-") {
+                    if (string.takeLast(1) in "./*+-") {
+                        string = string.dropLast(1)
+                    }
+                    displayField.text = string
+                    val result = Calculator.result(string)
+                    resultField.text = result
+                    historyList += "$string=$result"
+                } else {
+                    init()
+                }
             }
             buttonHist.setOnClickListener {
                 pushFragmentHist(historyList)
