@@ -117,6 +117,10 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonEquals.setOnClickListener {
+                if (string.takeLast(1) in "./*+-") {
+                    string = string.dropLast(1)
+                    displayField.text = string
+                }
                 val historyString = Calculator.result(string)
                 resultField.text = historyString
                 historyList += "$string=$historyString"
