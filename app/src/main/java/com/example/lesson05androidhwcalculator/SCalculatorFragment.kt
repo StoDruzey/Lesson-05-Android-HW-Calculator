@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.lesson05androidhwcalculator.databinding.FragmentScalculatorBinding
+var historyList = ArrayList<String>()
 
 class SCalculatorFragment : Fragment() {
     private var _binding: FragmentScalculatorBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    var historyList = ArrayList<String>()
+//    var historyList = ArrayList<String>()
 
 
     override fun onCreateView(
@@ -27,8 +28,6 @@ class SCalculatorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val historyList = mutableListOf<String>()
-//        var key = 1
 
         with(binding) {
 
