@@ -107,7 +107,7 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonEquals.setOnClickListener {
-                var historyString = Calculator.result(string)
+                val historyString = Calculator.result(string)
                 resultField.text = historyString
                 historyList += "$string=$historyString"
             }
