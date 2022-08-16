@@ -12,7 +12,7 @@ class SCalculatorFragment : Fragment() {
     private var _binding: FragmentScalculatorBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    val historyList = mutableListOf<String>()
+    var historyList = ArrayList<String>()
 
 
     override fun onCreateView(
@@ -111,8 +111,9 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonEquals.setOnClickListener {
-                resultField.text = Calculator.result(string)
-                historyList.add("$string=$resultField.text")
+                var historyString = Calculator.result(string)
+                resultField.text = historyString
+                historyList += "$string=$historyString"
             }
             buttonHist.setOnClickListener {
                 pushFragmentHist(historyList)

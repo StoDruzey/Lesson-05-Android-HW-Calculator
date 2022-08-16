@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lesson05androidhwcalculator.databinding.HistoryNotesBinding
+import java.util.ArrayList
 
 class HistoryAdapter(
-    private val historyList: List<String>,
-    private val historyClick: (String) -> Unit
+    private val historyList: ArrayList<String>?,
+    private val historyClick: (Unit) -> Unit
 ) : RecyclerView.Adapter<HistoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
@@ -19,22 +20,22 @@ class HistoryAdapter(
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.bind(historyList[position])
+        holder.bind(historyList?.get(position) ?: "")
     }
 
     override fun getItemCount(): Int {
-        return historyList.size
+        return historyList?.size ?: 0
     }
 }
 
 class HistoryViewHolder(
     private val binding: HistoryNotesBinding,
-    private val historyClick: (String) -> Unit
+    private val historyClick: (Unit) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: String) {
         binding.historyNote.text = item
         binding.root.setOnClickListener {
-            historyClick(item)
+            historyClick
         }
     }
 }
