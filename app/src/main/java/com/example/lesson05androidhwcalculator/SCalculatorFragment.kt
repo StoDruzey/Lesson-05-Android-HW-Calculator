@@ -13,9 +13,6 @@ class SCalculatorFragment : Fragment() {
     private var _binding: FragmentScalculatorBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-//    var historyList = ArrayList<String>()
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
