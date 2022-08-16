@@ -13,8 +13,6 @@ class HistoryFragment() : Fragment() {
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-//    val historyList: List<String>? = requireArguments().getStringArrayList(KEY_HISTORY_LIST)
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
