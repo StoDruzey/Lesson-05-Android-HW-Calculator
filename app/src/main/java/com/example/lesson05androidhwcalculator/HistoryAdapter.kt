@@ -8,7 +8,7 @@ import java.util.ArrayList
 
 class HistoryAdapter(
     private val historyList: ArrayList<String>?,
-    private val historyClick: (Unit) -> Unit
+    private val historyClick: (String) -> Unit
 ) : RecyclerView.Adapter<HistoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
@@ -30,12 +30,12 @@ class HistoryAdapter(
 
 class HistoryViewHolder(
     private val binding: HistoryNotesBinding,
-    private val historyClick: (Unit) -> Unit
+    private val historyClick: (String) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: String) {
         binding.historyNote.text = item
         binding.root.setOnClickListener {
-            historyClick
+            historyClick(item)
         }
     }
 }
