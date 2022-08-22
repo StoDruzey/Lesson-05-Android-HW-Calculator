@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.lesson05androidhwcalculator.databinding.FragmentScalculatorBinding
+var historyList = ArrayList<String>()
 
 class SCalculatorFragment : Fragment() {
     private var _binding: FragmentScalculatorBinding? = null
@@ -26,9 +28,13 @@ class SCalculatorFragment : Fragment() {
 
         with(binding) {
 
-            displayField.text = "0"
             var string = ""
-
+            fun init() {
+                displayField.text = "0"
+                string = ""
+                resultField.text = string
+            }
+            init()
             button0.setOnClickListener {
                 string += "0"
                 displayField.text = string
@@ -70,32 +76,69 @@ class SCalculatorFragment : Fragment() {
                 displayField.text = string
             }
             buttonDot.setOnClickListener {
-                string += "."
-                displayField.text = string
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
+                    string += "."
+                    displayField.text = string
+                }
             }
             buttonC.setOnClickListener {
-                string = ""
-                displayField.text = "0"
+                init()
             }
             buttonDel.setOnClickListener {
-                string = if (string.length != 0) {
-                    string.dropLast(1)
+                if (string.length != 0) {
+                    string = string.dropLast(1)
+                    displayField.text = string
                 } else {
-
+                    displayField.text = "0"
+                }
+            }
+            buttonDiv.setOnClickListener {
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
+                    string += "/"
+                    displayField.text = string
+                }
+            }
+            buttonMult.setOnClickListener {
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
+                    string += "*"
+                    displayField.text = string
+                }
+            }
+            buttonMinus.setOnClickListener {
+                if ((string.takeLast(1) !in ".+-") || string == "") {
+                    string += "-"
                 }
                 displayField.text = string
             }
-            button5.setOnClickListener {
-                string += "5"
-                displayField.text = string
+            buttonPlus.setOnClickListener {
+                if (string.isEmpty()) {
+                    init()
+                } else if (string.takeLast(1) !in "./*+-") {
+                    string += "+"
+                    displayField.text = string
+                }
             }
-            button6.setOnClickListener {
-                string += "6"
-                displayField.text = string
+            buttonEquals.setOnClickListener {
+                if (string.isNotEmpty() && string != "-") {
+                    if (string.takeLast(1) in "./*+-") {
+                        string = string.dropLast(1)
+                    }
+                    displayField.text = string
+                    val result = Calculator.result(string)
+                    resultField.text = result
+                    historyList += "$string=$result"
+                } else {
+                    init()
+                }
             }
-            button7.setOnClickListener {
-                string += "7"
-                displayField.text = string
+            buttonHist.setOnClickListener {
+                pushFragmentHist(historyList)
             }
         }
     }
@@ -104,30 +147,85 @@ class SCalculatorFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-//    open class GetString() {
-//
-//        private var string: String? = null
-//        fun read(): List<String> {
-//
-//        }
-//    }
 }
 
-
-//
-//    println("enter an arithmetic expression without brackets then press 'enter': ")
-//    private var string: String? = readLine()
-//    string = string ?: ""
-//    string = string.replace("""\s+""".toRegex(), "") //all spaces are removed
-//    val operands = mutableListOf<String>()
-//    if (string.isNotBlank()) {
-//        val regex = Regex("""-?\d+(\.\d+)?[*/\-+]?""")
-//        regex.findAll(string).forEach {
-//            operands.add(it.value)
-//        }
-//    }
-//    operands[operands.size - 1] = operands.last().replace("""[*/\-+]?$""".toRegex(), "")
-//    //removing the last symbol of the last operand if action
-//    return operands
-//}
+class Calculator() {
+    companion object {
+        fun result(string: String): String {
+            val operands = mutableListOf<String>()
+            if (string.isNotBlank()) {
+                val regex = Regex("""-?\d+(\.\d+)?[*/\-+]?""")
+                regex.findAll(string).forEach {
+                    operands.add(it.value)
+                }
+            }
+            //removing the last symbol of the last operand if action
+            operands[operands.size - 1] = operands.last().replace("""[*/\-+]?$""".toRegex(), "")
+            //perform actions:
+            var i = 0
+            var size = operands.size
+            //first multiply and divide
+            while (i < (size - 1)) {
+                val num1 = operands[i].dropLast(1).toDouble()
+                var num2: Double
+                var act2: String
+                if (i == size - 2) {
+                    num2 = operands[i + 1].toDouble()
+                    act2 = ""
+                } else {
+                    num2 = operands[i + 1].dropLast(1).toDouble()
+                    act2 = operands[i + 1].takeLast(1)
+                }
+                when (operands[i].takeLast(1)) {
+                    "*" -> {
+                        operands[i + 1] = (num1 * num2).toString() + act2
+                        operands.removeAt(i)
+                        --size
+                        --i
+                    }
+                    "/" -> {
+                        if (num2 == 0.0) {
+                            return "error"
+                        }
+                        operands[i + 1] = (num1 / num2).toString() + act2
+                        operands.removeAt(i)
+                        --size
+                        --i
+                    }
+                }
+                ++i
+            }
+            //then add and subtract
+            size = operands.size
+            i = 0
+            while (i < (size - 1)) {
+                val num1 = operands[i].dropLast(1).toDouble()
+                var num2: Double
+                var act2: String
+                if (i == size - 2) {
+                    num2 = operands[i + 1].toDouble()
+                    act2 = ""
+                } else {
+                    num2 = operands[i + 1].dropLast(1).toDouble()
+                    act2 = operands[i + 1].takeLast(1)
+                }
+                when (operands[i].takeLast(1)) {
+                    "+" -> {
+                        operands[i + 1] = (num1 + num2).toString() + act2
+                        operands.removeAt(i)
+                        --size
+                        --i
+                    }
+                    "-" -> {
+                        operands[i + 1] = (num1 - num2).toString() + act2
+                        operands.removeAt(i)
+                        --size
+                        --i
+                    }
+                }
+                ++i
+            }
+            return operands[0]
+        }
+    }
+}

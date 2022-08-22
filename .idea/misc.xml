@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android studying/Lesson 05 Android HW Calculator/app/src/main/res/drawable/frame_style.xml" value="0.129" />
         <entry key="..\:/Android studying/Lesson 05 Android HW Calculator/app/src/main/res/drawable/frame_text_style.xml" value="0.1335" />
         <entry key="..\:/Android studying/Lesson 05 Android HW Calculator/app/src/main/res/layout/activity_main.xml" value="0.12031408308004053" />
+        <entry key="..\:/Android studying/Lesson 05 Android HW Calculator/app/src/main/res/layout/fragment_history.xml" value="0.1308876811594203" />
         <entry key="..\:/Android studying/Lesson 05 Android HW Calculator/app/src/main/res/layout/fragment_scalculator.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android studying/Lesson 05 Android HW Calculator/app/src/main/res/layout/history_notes.xml" value="0.2" />
         <entry key="..\:/Android studying/Lesson 05 Android HW Calculator/app/src/main/res/layout/test_layout.xml" value="0.22826086956521738" />
       </map>
     </option>

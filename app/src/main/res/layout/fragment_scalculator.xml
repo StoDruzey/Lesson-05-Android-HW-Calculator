@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar"
+        android:id="@+id/toolbar_calculator"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -26,9 +26,10 @@
         android:layout_height="0dp"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintTop_toBottomOf="@id/tool_bar"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_calculator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:autoSizeTextType="uniform"
         android:textSize="50sp"
         android:text="0"
         android:background="@drawable/frame_style"/>
@@ -42,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/display_field"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:autoSizeTextType="uniform"
         android:textSize="50sp"
         tools:text="0"
         android:background="@drawable/frame_style"/>
@@ -57,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/result_field"
         app:layout_constraintStart_toStartOf="parent"
         android:text="hist"
-        android:textSize="27sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"/>
 
     <Button
@@ -71,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@id/result_field"
         app:layout_constraintStart_toEndOf="@id/button_hist"
         android:text=""
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"
         />
 
@@ -86,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@id/result_field"
         app:layout_constraintStart_toEndOf="@id/button_m"
         android:text="C"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#E91E63"/>
 
     <Button
@@ -100,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@id/result_field"
         app:layout_constraintStart_toEndOf="@id/button_c"
         android:text="Del"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#E91E63"/>
 
     <Button
@@ -114,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_hist"
         app:layout_constraintStart_toStartOf="parent"
         android:text="7"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -128,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_m"
         app:layout_constraintStart_toEndOf="@id/button_7"
         android:text="8"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -142,7 +144,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_c"
         app:layout_constraintStart_toEndOf="@id/button_8"
         android:text="9"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -156,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_del"
         app:layout_constraintStart_toEndOf="@id/button_9"
         android:text="/"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"/>
 
     <Button
@@ -170,7 +172,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_7"
         app:layout_constraintStart_toStartOf="parent"
         android:text="4"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -184,7 +186,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_8"
         app:layout_constraintStart_toEndOf="@id/button_4"
         android:text="5"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -198,7 +200,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_9"
         app:layout_constraintStart_toEndOf="@id/button_5"
         android:text="6"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -212,7 +214,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_div"
         app:layout_constraintStart_toEndOf="@id/button_6"
         android:text="*"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"/>
 
     <Button
@@ -226,7 +228,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_4"
         app:layout_constraintStart_toStartOf="parent"
         android:text="1"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -240,7 +242,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_5"
         app:layout_constraintStart_toEndOf="@id/button_1"
         android:text="2"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -254,7 +256,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_6"
         app:layout_constraintStart_toEndOf="@id/button_2"
         android:text="3"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -268,7 +270,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_mult"
         app:layout_constraintStart_toEndOf="@id/button_3"
         android:text="-"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"/>
 
     <Button
@@ -282,7 +284,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_1"
         app:layout_constraintStart_toStartOf="parent"
         android:text="0"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -296,7 +298,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_2"
         app:layout_constraintStart_toEndOf="@id/button_0"
         android:text="."
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#009688"/>
 
     <Button
@@ -310,7 +312,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_3"
         app:layout_constraintStart_toEndOf="@id/button_dot"
         android:text="="
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"/>
 
     <Button
@@ -324,7 +326,7 @@
         app:layout_constraintTop_toBottomOf="@id/button_minus"
         app:layout_constraintStart_toEndOf="@id/button_equals"
         android:text="+"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:backgroundTint="#3F51B5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
